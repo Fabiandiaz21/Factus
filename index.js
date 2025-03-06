@@ -12,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("Public"))
 app.use("/api/factura", factura);
 app.use("/api/clientes", clientes);
 app.use("/api/items", items);
