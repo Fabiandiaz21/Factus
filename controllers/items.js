@@ -38,24 +38,37 @@ const itemsController = {
     }
   },
 
-  // Eliminar un ítem por su ID
-deleteItem: async (req, res) => {
-  try {
-    const { id } = req.params;
-    const item = await Item.findByIdAndDelete(id);
+  // Editar un ítem por su ID
+  updateItem: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const updatedItem = await Item.findByIdAndUpdate(id, req.body, { new: true });
 
-    if (!item) {
-      return res.status(404).json({ message: "Ítem no encontrado" });
+      if (!updatedItem) {
+        return res.status(404).json({ message: "Ítem no encontrado" });
+      }
+
+      res.json({ message: "Ítem actualizado con éxito", item: updatedItem });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
     }
+  },
 
-    res.json({ message: "Ítem eliminado con éxito" });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+  // Eliminar un ítem por su ID
+  deleteItem: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const item = await Item.findByIdAndDelete(id);
+
+      if (!item) {
+        return res.status(404).json({ message: "Ítem no encontrado" });
+      }
+
+      res.json({ message: "Ítem eliminado con éxito" });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   }
-}
-
 };
-
-
 
 export default itemsController;

@@ -1,19 +1,19 @@
 import mongoose from "mongoose";
 
 const ItemSchema = new mongoose.Schema({
-  code_reference: { type: String, required: true },
-  name: { type: String, required: true },
-  quantity: { type: Number, required: true },
-  discount_rate: { type: Number, required: true },
-  price: { type: Number, required: true },
-  tax_rate: { type: String, required: true },
-  unit_measure_id: { type: Number, required: true },
-  standard_code_id: { type: Number, required: true },
-  is_excluded: { type: Number, required: true },
-  tribute_id: { type: Number, required: true },
+  code_reference: {  type: String},
+  name: { type: String},
+  quantity: { type: Number, },
+  discount_rate: { type: Number,  },
+  price: { type: Number,  },
+  tax_rate: { type: String,  },
+  unit_measure_id: { type: String, },
+  standard_code_id: { type: String},
+  is_excluded: { type: Number, },
+  tribute_id: { type: String},
   withholding_taxes: [{
-      code: { type: String, required: true },
-      withholding_tax_rate: { type: String, required: true }
+      code: { type: String },
+      withholding_tax_rate: { type: String }
   }]
 });
 

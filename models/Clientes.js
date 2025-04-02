@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
 
 const ClienteSchema = new mongoose.Schema({
-  identification: { type: String, required: true },
+  identification: { type: String,},
   dv: { type: String },
   company: { type: String },
   trade_name: { type: String },
-  names: { type: String, required: true },
-  address: { type: String, required: true },
-  email: { type: String, required: true },
-  phone: { type: String, required: true },
-  legal_organization_id: { type: String, required: true },
-  tribute_id: { type: String, required: true },
-  identification_document_id: { type: String, required: true },
-  municipality_id: { type: String, required: true }
+  names: { type: String, },
+  address: { type: String,  },
+  email: { type: String, },
+  phone: { type: String, },
+  legal_organization_id: { type: String,},
+  tribute_id: { type: String, },
+  identification_document_id: { type: String, },
+  municipality_id: { type: String,  }
 });
 
-export default mongoose.model("Cliente", ClienteSchema);
+export default mongoose.model("customer", ClienteSchema);

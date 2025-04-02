@@ -9,7 +9,7 @@ const clientesController = {
       res.status(201).json({ message: "Cliente creado con éxito", cliente });
     } catch (error) {
       res.status(500).json({ error: error.message });
-    }a
+    }
   },
 
   // Obtener todos los clientes
@@ -38,9 +38,37 @@ const clientesController = {
     }
   },
 
+  // Actualizar un cliente
+  updateCliente: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const clienteActualizado = await Cliente.findByIdAndUpdate(id, req.body, { new: true });
 
+      if (!clienteActualizado) {
+        return res.status(404).json({ message: "Cliente no encontrado" });
+      }
 
+      res.json({ message: "Cliente actualizado con éxito", cliente: clienteActualizado });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  },
+
+  // Eliminar un cliente
+  deleteCliente: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const clienteEliminado = await Cliente.findByIdAndDelete(id);
+
+      if (!clienteEliminado) {
+        return res.status(404).json({ message: "Cliente no encontrado" });
+      }
+
+      res.json({ message: "Cliente eliminado con éxito" });
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
 };
-
 
 export default clientesController;
